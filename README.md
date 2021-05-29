@@ -43,7 +43,8 @@ Original image data
 
 ### Design and Test a Model Architecture
 #### Preprocessing - The submission describes the preprocessing techniques used and why these techniques were chosen
-The images are of size 32x32x3 and these has been first transformed to 32x32x1, i.e removed the rgb channels and converted to gray scale.Then they are normalized by subtracting and dividing by 127.5(after some trail and error), the max value a pixel value can be.
+The images are of size 32x32x3 and these has been first transformed to 32x32x1, i.e removed the rgb channels and converted to gray scale. 
+Then the images are normalized by subtracting and dividing by 127.5(after some trail and error), the max value a pixel value can be. This ensures all the data points have mean of zero and the learning rate can be consistently applied across all weights without having to calculate per weight learning rate.
 
 After preprocessing the images look like below
     ![processed_data](./images_writeup/preprocessed_data.png "Preprocessed Data")
@@ -124,7 +125,9 @@ At every iteration the model is tested for accuracy with the test data. At the e
 #### Acquiring New Images - The submission includes five new German Traffic signs found on the web, and the images are visualized. Discussion is made as to particular qualities of the images or traffic signs in the images that are of interest, such as whether they would be difficult for the model to classify
 
 Found the following german traffic signs are being used to test out the model that above process has never seen.
+
 They are of different sizes and of different resolutions.
+They are simple images with no too much noise. These images are not 32x32x1, hence these images are further transformed and normalized to suit for LeNet algorithm above. Some of these images have water marks which could present some challenges, but LeNet architecture is proven to be effective with this level of noise. Over all I am confident these images should be easy to classify with our pre-trained model.
 
 ![1](./german_web_images/1.jpeg "1") |![2](./german_web_images/2.jpeg "2") |![3](./german_web_images/3.jpeg "3") |![4](./german_web_images/4.jpeg "4") |![5](./german_web_images/5.jpeg "5")
 
